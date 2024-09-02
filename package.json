@@ -1,0 +1,27 @@
+{
+  "name": "discord-bot-template",
+  "version": "0.1.0",
+  "description": "A discord bot template to speed up the process of setting up bots.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/recleun/discord-bot-template.git"
+  },
+  "keywords": [
+    "discord.js",
+    "discord",
+    "bot"
+  ],
+  "author": "recleun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/recleun/discord-bot-template/issues"
+  },
+  "homepage": "https://github.com/recleun/discord-bot-template#readme",
+  "dependencies": {
+    "discord.js": "^14.15.3"
+  }
+}
