@@ -6,7 +6,8 @@
 	},
 	"channels": {
 		"dev": {
-			"logs": ""
+			"logs": "",
+			"errors": ""
 		}
 	}
 }
