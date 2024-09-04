@@ -6,7 +6,7 @@ import { loadCommands } from "../utils/functions.js";
 const SECRETS = JSON.parse(fs.readFileSync("./secrets.json").toString());
 const CONFIG = JSON.parse(fs.readFileSync("./config.json").toString());
 const commands = [];
-const commandFiles = await loadCommands(path.join(import.meta.dirname, "../commands"));
+const commandFiles = await loadCommands(path.join(import.meta.dirname, "../dev"));
 
 for (const file of commandFiles) {
 	 commands.push((await import(file)).command.data.toJSON());

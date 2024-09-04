@@ -9,6 +9,7 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 client.commands = new Collection();
 const commands = await loadCommands(path.join(import.meta.dirname, "./commands"));
+commands.push(...(await loadCommands(path.join(import.meta.dirname, "./dev"))));
 
 for (const c of commands) {
 	const command = (await import(c)).command;
