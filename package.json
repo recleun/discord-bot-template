@@ -5,7 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+	"deploy": "node src/scripts/deploy-commands.js",
+	"deploy-dev": "node src/scripts/deploy-dev-commands.js"
   },
   "repository": {
     "type": "git",
