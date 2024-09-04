@@ -1,0 +1,12 @@
+{
+	"guilds": {
+		"dev": {
+			"guild": ""
+		}
+	},
+	"channels": {
+		"dev": {
+			"logs": ""
+		}
+	}
+}
