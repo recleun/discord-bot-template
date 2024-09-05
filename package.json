@@ -7,7 +7,11 @@
   "scripts": {
     "start": "node src/index.js",
 	"deploy": "node src/scripts/deploy-commands.js",
-	"deploy-dev": "node src/scripts/deploy-dev-commands.js"
+	"deploy-dev": "node src/scripts/deploy-dev-commands.js",
+	"undeploy-all-global": "node src/scripts/undeploy-commands.js",
+	"undeploy-global": "node src/scripts/undeploy-command.js",
+	"undeploy-all-dev": "node src/scripts/undeploy-dev-commands.js",
+	"undeploy-dev": "node src/scripts/undeploy-dev-command.js"
   },
   "repository": {
     "type": "git",
