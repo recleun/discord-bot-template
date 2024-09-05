@@ -14,6 +14,7 @@ for (const file of commandFiles) {
 const rest = new REST().setToken(SECRETS.TOKEN);
 
 try {
+	if (commands.length == 0) throw new Error("No commands to deploy: commands folder is empty");
 	console.log(`[LOG] Started globally deploying ${commands.length} slash commands.`);
 	const data = await rest.put(
 		Routes.applicationCommands(SECRETS.APPLICATION_ID),

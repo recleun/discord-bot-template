@@ -15,6 +15,8 @@ for (const file of commandFiles) {
 const rest = new REST().setToken(SECRETS.TOKEN);
 
 try {
+	if (!CONFIG.guilds.dev.guild) throw new Error("devGuild is not set in config.json");
+	if (commands.length == 0) throw new Error("No commands to deploy: dev folder is empty");
 	console.log(`[LOG] Started globally deploying ${commands.length} slash commands.`);
 	const data = await rest.put(
 		Routes.applicationGuildCommands(SECRETS.APPLICATION_ID, CONFIG.guilds.dev.guild),

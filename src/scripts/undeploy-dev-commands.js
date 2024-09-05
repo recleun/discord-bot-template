@@ -7,6 +7,7 @@ const CONFIG = JSON.parse(fs.readFileSync("./config.json").toString());
 const rest = new REST().setToken(SECRETS.TOKEN);
 
 try {
+	if (!CONFIG.guilds.dev.guild) throw new Error("devGuild is not set in config.json");
 	console.log(`[LOG] Started undeploying all dev slash commands.`);
 	await rest.put(
 		Routes.applicationGuildCommands(SECRETS.APPLICATION_ID, CONFIG.guilds.dev.guild),
