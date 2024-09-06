@@ -1,7 +1,7 @@
 import { Client, Colors, EmbedBuilder, Events, GatewayIntentBits, Collection } from "discord.js";
 import fs from "fs";
 import path from "path";
-import { loadGuilds, loadChannel, loadCommands } from "./utils/functions.js";
+import { loadGuilds, loadChannel, loadCommands, parseCommandLog } from "./utils/functions.js";
 import logger from "./utils/logger.js";
 
 const SECRETS = JSON.parse(fs.readFileSync("./secrets.json").toString());
@@ -40,15 +40,13 @@ client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isChatInputCommand()) return;
 	const command = interaction.client.commands.get(interaction.commandName);
 	if (!command) {
-		logger.error(`Command not found: ${interaction.commandName} -
-			${interaction.user.username} (${interaction.user.id})`);
+		logger.error(`Command not found: ${parseCommandLog(interaction)}`);
 		return;
 	}
 	try {
 		await command.execute(interaction);
 	} catch (e) {
-		logger.error(`Command failed to execute: ${interaction.commandName} -
-			${interaction.user.username} (${interaction.user.id})`);
+		logger.error(`Command failed to execute: ${parseCommandLog(interaction)}`);
 		if (interaction.replied || interaction.deferred) {
 			await interaction.followUp({ content: 'There was an error while executing this command.', ephemeral: true });
 		} else {
