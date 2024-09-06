@@ -11,7 +11,8 @@
     "undeploy-all-global": "node src/scripts/undeploy-commands.js",
     "undeploy-global": "node src/scripts/undeploy-command.js",
     "undeploy-all-dev": "node src/scripts/undeploy-dev-commands.js",
-    "undeploy-dev": "node src/scripts/undeploy-dev-command.js"
+    "undeploy-dev": "node src/scripts/undeploy-dev-command.js",
+    "linter-test": "npx eslint"
   },
   "repository": {
     "type": "git",
