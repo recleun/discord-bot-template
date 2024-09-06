@@ -1,13 +1,13 @@
 {
-	"guilds": {
-		"dev": {
-			"guild": ""
-		}
-	},
-	"channels": {
-		"dev": {
-			"logs": "",
-			"errors": ""
-		}
-	}
+  "guilds": {
+    "dev": {
+      "guild": ""
+    }
+  },
+  "channels": {
+    "dev": {
+      "logs": "",
+      "errors": ""
+    }
+  }
 }
