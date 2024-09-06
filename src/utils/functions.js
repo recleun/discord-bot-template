@@ -1,3 +1,4 @@
+import { CommandInteraction } from "discord.js";
 import fs from "fs";
 import path from "path";
 
@@ -48,3 +49,12 @@ export async function loadCommands(commandsPath, accumulated = []) {
 	}
 	return commands;
 }
+
+/**
+	* @param {CommandInteraction} interaction
+	* @returns {String}
+	*/
+export function parseCommandLog(interaction) {
+	return `/${interaction.commandName} - @${interaction.user.username} (${interaction.user.id})`;
+}
+
