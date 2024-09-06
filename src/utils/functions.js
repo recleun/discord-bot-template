@@ -7,7 +7,7 @@ import logger from '../utils/logger.js';
   * @param {String} guildId
   * @param {String} guildName
   * @param {Client} client
-  * @returns {void}
+  * @returns {Promise<void>}
   */
 export async function loadGuilds(guildId, guildName, client) {
     if (!guildId) { logger.warn(`devGuild is not set in config.json!`); }
@@ -25,7 +25,7 @@ export async function loadGuilds(guildId, guildName, client) {
   * @param {String} channelId
   * @param {String} channelName
   * @param {Client} client
-  * @returns {void}
+  * @returns {Promise<void>}
   */
 export async function loadChannel(channelId, channelName, client) {
     if (!channelId) { return logger.warn(`${channelName} is not set in config.json!`); }
