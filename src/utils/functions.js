@@ -10,7 +10,7 @@ import logger from '../utils/logger.js';
   * @returns {Promise<void>}
   */
 export async function loadGuild(guildId, guildName, client) {
-    if (!guildId) { logger.warn(`devGuild is not set in config.json!`); }
+    if (!guildId) { logger.warn('devGuild is not set in config.json!'); }
     try {
         const devGuild = await client.guilds.fetch(guildId)
         client[guildName] = devGuild;
