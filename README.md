@@ -21,7 +21,7 @@ Clone/fork this repository to your device, then do the following:
 5. You are pretty much ready to go, but it is heavily recommended to do the following steps.
 6. Fill in `guilds.dev.guild` with your guild ID (server ID). This will have your main development features, like logging, and errors will be printed here too.
 7. After you specify the development guild ID, you need to specify the channel ID for logging (`channels.dev.logs`) and errors (`channels.dev.errors`).
-8. Please not that steps 5-7 are completely optional, but they are heavily recommended, and not doing them will cause a warning when the bot starts.
+8. Please note that steps 5-7 are completely optional, but they are heavily recommended, and not doing them will cause a warning when the bot starts.
 
 ### Scripts
 
