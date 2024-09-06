@@ -1,4 +1,5 @@
 import { CommandInteraction, SlashCommandBuilder } from "discord.js";
+import logger from "../utils/logger.js";
 
 export const command = {
 	data: new SlashCommandBuilder()
@@ -8,7 +9,6 @@ export const command = {
 	* @param {CommandInteraction} interaction
 	*/
 	execute: async function(interaction) {
-		console.info(`[CMD] ${this.data.name} - ${interaction.user.username} (${interaction.user.id})`);
 		return await interaction.reply("pong");
 	}
 }
