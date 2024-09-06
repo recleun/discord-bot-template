@@ -1,4 +1,4 @@
-import { parseCommandLog } from './functions';
+import { parseCommandLog } from './functions.js';
 
 export default {
     /**
