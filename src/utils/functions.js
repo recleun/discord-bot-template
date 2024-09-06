@@ -1,26 +1,27 @@
 import { CommandInteraction } from "discord.js";
 import fs from "fs";
 import path from "path";
+import logger from "../utils/logger.js";
 
 export async function loadGuilds(guildId, guildName, client) {
-	if (!guildId) console.warn(`[WARN] devGuild is not set in config.json!`);
+	if (!guildId) logger.warn(`devGuild is not set in config.json!`);
 	try {
 		const devGuild = await client.guilds.fetch(guildId)
 		client[guildName] = devGuild;
-		console.log(`[LOG] ${guildName}: ${client[guildName].name} ${client[guildName].id}`);
+		logger.log(`${guildName}: ${client[guildName].name} ${client[guildName].id}`);
 	} catch (e) {
-		console.error(`[ERR] Error while fetching ${guildName}: ${e}`);
+		logger.error(`Error while fetching ${guildName}: ${e}`);
 	}
 }
 
 export async function loadChannel(channelId, channelName, client) {
-	if (!channelId) return console.warn(`[WARN] ${channelName} is not set in config.json!`);
+	if (!channelId) return logger.warn(`${channelName} is not set in config.json!`);
 	try {
 		const devChannel = await client.devGuild.channels.fetch(channelId);
 		client[channelName] = devChannel;
-		console.log(`[LOG] ${channelName}: #${client[channelName].name} (${client[channelName].id})`);
+		logger.log(`${channelName}: #${client[channelName].name} (${client[channelName].id})`);
 	} catch (e) {
-		console.error(`[ERR] Error while fetching ${channelName}: ${e}`);
+		logger.error(`Error while fetching ${channelName}: ${e}`);
 	}
 }
 
@@ -41,7 +42,7 @@ export async function loadCommands(commandsPath, accumulated = []) {
 				commands.push(path.join(commandsPath, files[i]));
 			} catch (e) {
 				const commandName = commandPath.split("/");
-				console.error(`[ERR] Failed to load the command ${commandName[commandName.length-1]}: ${e}`);
+				logger.error(`Failed to load the command ${commandName[commandName.length-1]}: ${e}`);
 			}
 		} else {
 			commands.push(...loadCommands(path.join(commandsPath, files[i]), accumulated));
