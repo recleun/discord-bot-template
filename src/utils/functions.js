@@ -1,8 +1,15 @@
-import { CommandInteraction } from "discord.js";
+import { Client, CommandInteraction } from "discord.js";
 import fs from "fs";
 import path from "path";
 import logger from "../utils/logger.js";
 
+/**
+  * @description Loads a guild and add it to the `client` instance.
+  * @param {String} guildId
+  * @param {String} guildName
+  * @param {Client} client
+  * @returns {void}
+  */
 export async function loadGuilds(guildId, guildName, client) {
     if (!guildId) logger.warn(`devGuild is not set in config.json!`);
     try {
@@ -14,6 +21,13 @@ export async function loadGuilds(guildId, guildName, client) {
     }
 }
 
+/**
+  * @description Loads a channel and adds it to the `client` instance.
+  * @param {String} channelId
+  * @param {String} channelName
+  * @param {Client} client
+  * @returns {void}
+  */
 export async function loadChannel(channelId, channelName, client) {
     if (!channelId) return logger.warn(`${channelName} is not set in config.json!`);
     try {
@@ -26,8 +40,11 @@ export async function loadChannel(channelId, channelName, client) {
 }
 
 /**
-    * @returns {Promise<String[]>}
-    */
+  * @description Goes through the path given and gets the path of all files ending with `.js`.
+  * @param {String} commandsPath
+  * @param {String[]} [accumulated=[]]
+  * @returns {Promise<String[]>}
+  */
 export async function loadCommands(commandsPath, accumulated = []) {
     const commands = [...accumulated];
     const files = fs.readdirSync(commandsPath);
@@ -52,9 +69,10 @@ export async function loadCommands(commandsPath, accumulated = []) {
 }
 
 /**
-    * @param {CommandInteraction} interaction
-    * @returns {String}
-    */
+  * @description Parse a log through an `interaction` instance so it can be logged easily.
+  * @param {CommandInteraction} interaction
+  * @returns {String}
+  */
 export function parseCommandLog(interaction) {
     return `/${interaction.commandName} - @${interaction.user.username} (${interaction.user.id})`;
 }
