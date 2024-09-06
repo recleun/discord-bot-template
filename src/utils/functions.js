@@ -1,7 +1,6 @@
-import { Client, CommandInteraction } from "discord.js";
-import fs from "fs";
-import path from "path";
-import logger from "../utils/logger.js";
+import fs from 'fs';
+import path from 'path';
+import logger from '../utils/logger.js';
 
 /**
   * @description Loads a guild and add it to the `client` instance.
@@ -11,7 +10,7 @@ import logger from "../utils/logger.js";
   * @returns {void}
   */
 export async function loadGuilds(guildId, guildName, client) {
-    if (!guildId) logger.warn(`devGuild is not set in config.json!`);
+    if (!guildId) { logger.warn(`devGuild is not set in config.json!`); }
     try {
         const devGuild = await client.guilds.fetch(guildId)
         client[guildName] = devGuild;
@@ -29,7 +28,7 @@ export async function loadGuilds(guildId, guildName, client) {
   * @returns {void}
   */
 export async function loadChannel(channelId, channelName, client) {
-    if (!channelId) return logger.warn(`${channelName} is not set in config.json!`);
+    if (!channelId) { return logger.warn(`${channelName} is not set in config.json!`); }
     try {
         const devChannel = await client.devGuild.channels.fetch(channelId);
         client[channelName] = devChannel;
@@ -49,16 +48,16 @@ export async function loadCommands(commandsPath, accumulated = []) {
     const commands = [...accumulated];
     const files = fs.readdirSync(commandsPath);
     for (let i = 0; i < files.length; i++) {
-        if (files[i].endsWith(".js")) {
+        if (files[i].endsWith('.js')) {
             const commandPath = path.join(commandsPath, files[i]);
             try {
                 const command = (await import(commandPath)).command;
                 if (!command.data || !command.execute) {
-                    throw new Error("Command missing data propery or execute method");
+                    throw new Error('Command missing data propery or execute method');
                 }
                 commands.push(path.join(commandsPath, files[i]));
             } catch (e) {
-                const commandName = commandPath.split("/");
+                const commandName = commandPath.split('/');
                 logger.error(`Failed to load the command ${commandName[commandName.length-1]}: ${e}`);
             }
         } else {

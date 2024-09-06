@@ -1,5 +1,4 @@
-import { CommandInteraction } from "discord.js";
-import { parseCommandLog } from "./functions";
+import { parseCommandLog } from './functions';
 
 export default {
     /**

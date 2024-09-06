@@ -1,8 +1,8 @@
-import { REST, Routes } from "discord.js";
-import fs from "fs";
-import logger from "../utils/logger.js";
+import { REST, Routes } from 'discord.js';
+import fs from 'fs';
+import logger from '../utils/logger.js';
 
-const SECRETS = JSON.parse(fs.readFileSync("./secrets.json").toString());
+const SECRETS = JSON.parse(fs.readFileSync('./secrets.json').toString());
 const rest = new REST().setToken(SECRETS.TOKEN);
 
 try {
