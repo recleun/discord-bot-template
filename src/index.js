@@ -1,7 +1,7 @@
 import { Client, Colors, EmbedBuilder, Events, GatewayIntentBits, Collection } from 'discord.js';
 import fs from 'fs';
 import path from 'path';
-import { loadGuilds, loadChannel, loadCommands, parseCommandLog } from './utils/functions.js';
+import { loadGuild, loadChannel, loadCommands, parseCommandLog } from './utils/functions.js';
 import logger from './utils/logger.js';
 
 const SECRETS = JSON.parse(fs.readFileSync('./secrets.json').toString());
@@ -19,7 +19,7 @@ for (const c of commands) {
 }
 
 client.once(Events.ClientReady, async readyClient => {
-    await loadGuilds(CONFIG.guilds.dev.guild, 'devGuild', client);
+    await loadGuild(CONFIG.guilds.dev.guild, 'devGuild', client);
     if (client.devGuild) {
         await loadChannel(CONFIG.channels.dev.logs, 'devLogs', client);
         await loadChannel(CONFIG.channels.dev.errors, 'devErrors', client);
