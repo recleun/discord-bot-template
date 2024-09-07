@@ -12,7 +12,10 @@
     "undeploy-global": "node src/scripts/undeploy-command.js",
     "undeploy-all-dev": "node src/scripts/undeploy-dev-commands.js",
     "undeploy-dev": "node src/scripts/undeploy-dev-command.js",
-    "linter-test": "npx eslint"
+    "linter-check": "npx eslint",
+    "linter-fix": "npx eslint --fix",
+    "prettier-check": "npx prettier . --check",
+    "prettier-fix": "npx prettier . --write"
   },
   "repository": {
     "type": "git",
